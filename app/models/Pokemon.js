@@ -1,32 +1,13 @@
-const Sequelize = require('sequelize');
-const client = require('../database');
+const db = require('../db');
 
+module.exports = class {
+  static async findAll(){
+    const result = await db.query('SELECT * FROM pokemon;');
+    return result.rows;
+  }
 
-class Pokemon extends Sequelize.Model {
-
+  static async findOne(id){
+    const result = await db.query('SELECT * FROM pokemon WHERE id = $1;', [id]);
+    return result.rows[0];
+  }
 };
-
-Pokemon.init({
-
-    nom: Sequelize.TEXT,
-    pv: Sequelize.TEXT,
-    attaque: Sequelize.INTEGER,
-    defense: Sequelize.INTEGER,
-    attaque_spe: Sequelize.INTEGER,
-    defense_spe: Sequelize.INTEGER,
-    vitesse: Sequelize.INTEGER,
-    created_at: Sequelize.TEXT,
-    updated_at: Sequelize.TEXT,
-    numero: Sequelize.INTEGER,
-    
-  },
-  
-  {
-    sequelize: client,
-    tableName: "pokemon",
-    underscored: true,
-    timestamps: true
-  });
-
-
-module.exports = Pokemon;

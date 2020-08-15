@@ -1,23 +1,16 @@
-const Sequelize = require('sequelize');
-const client = require('../database');
+const db = require('../db');
 
+module.exports = class {
+  static async findAllByType(id){
+    const result = await db.query(
+      `SELECT * FROM pokemon
+      INNER JOIN pokemon_type on pokemon.numero = pokemon_type.pokemon_numero
+      WHERE pokemon_type.type_id = $1;`,
+      [id]);
 
-class Type extends Sequelize.Model {
-
+    return result.rows;
+  }
 };
 
-Type.init({
-
-    name: Sequelize.TEXT,
-    color: Sequelize.TEXT,
-  },
-  
-  {
-    sequelize: client,
-    tableName: "type",
-    underscored: true,
-    timestamps: true
-  });
 
 
-module.exports = Type;

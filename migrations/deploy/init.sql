@@ -19,13 +19,17 @@ CREATE TABLE pokemon (
 CREATE TABLE pokemon_type (
   "id" int NOT NULL,
   "pokemon_numero" int NOT NULL,
-  "type_id" int NOT NULL
+  "type_id" int NOT NULL,
+  "created_at" TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP NULL
 );
 
 CREATE TABLE type (
   "id" int NOT NULL,
   "name" text NOT NULL,
-  "color" text NOT NULL
+  "color" text NOT NULL,
+  "created_at" TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  "updated_at" TIMESTAMP NULL
 );
 
 COMMIT;
