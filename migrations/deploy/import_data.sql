@@ -1,26 +1,6 @@
---
--- Structure de la table 'pokemon'
---
+-- Deploy pokemon:import_data to pg
 
-DROP TABLE IF EXISTS "pokemon";
-
-CREATE TABLE "pokemon" (
-  "id" int NOT NULL,
-  "nom" varchar(255) NOT NULL,
-  "pv" int NOT NULL,
-  "attaque" int NOT NULL,
-  "defense" int NOT NULL,
-  "attaque_spe" int NOT NULL,
-  "defense_spe" int NOT NULL,
-  "vitesse" int NOT NULL,
-  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  "updated_at" TIMESTAMP NULL,
-  "numero" int NOT NULL
-);
-
---
--- Contenu de la table 'pokemon'
---
+BEGIN;
 
 INSERT INTO "pokemon" ("id", "nom", "pv", "attaque", "defense", "attaque_spe", "defense_spe", "vitesse", "created_at", "updated_at", "numero") VALUES
 (1209, 'Bulbizarre', 45, 49, 49, 65, 65, 45,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 1),
@@ -50,7 +30,7 @@ INSERT INTO "pokemon" ("id", "nom", "pv", "attaque", "defense", "attaque_spe", "
 (1233, 'Pikachu', 35, 55, 30, 50, 40, 90, '2018-10-04 12:15:33', '2018-10-04 12:15:33', 25),
 (1234, 'Raichu', 60, 90, 55, 90, 80, 100,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 26),
 (1235, 'Sabelette', 50, 75, 85, 20, 30, 40,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 27),
-(1236, 'Sablaireau', 75, 100, 110, 45, 55,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 65, 28),
+(1236, 'Sablaireau', 75, 100, 110, 45, 55, 65,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 28),
 (1237, 'Nidoran F', 55, 47, 52, 40, 40, 41,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 29),
 (1238, 'Nidorina', 70, 62, 67, 55, 55, 56,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 30),
 (1239, 'Nidoqueen', 90, 82, 87, 75, 85, 76,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 31),
@@ -174,23 +154,6 @@ INSERT INTO "pokemon" ("id", "nom", "pv", "attaque", "defense", "attaque_spe", "
 (1357, 'Dracolosse', 91, 134, 95, 100, 100, 80,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 149),
 (1358, 'Mewtwo', 106, 110, 90, 154, 90, 130,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 150),
 (1359, 'Mew', 100, 100, 100, 100, 100, 100,'2018-10-04 12:15:33', '2018-10-04 12:15:33', 151);
-
--- --------------------------------------------------------
-
---
--- Structure de la table 'pokemon_type'
---
-DROP TABLE IF EXISTS "pokemon_type";
-
-CREATE TABLE "pokemon_type" (
-  "id" int NOT NULL,
-  "pokemon_numero" int NOT NULL,
-  "type_id" int NOT NULL
-);
-
---
--- Contenu de la table 'pokemon_type'
---
 
 INSERT INTO "pokemon_type" ("id", "pokemon_numero", "type_id") VALUES
 (431, 1, 10),
@@ -409,24 +372,6 @@ INSERT INTO "pokemon_type" ("id", "pokemon_numero", "type_id") VALUES
 (644, 150, 12),
 (645, 151, 12);
 
--- --------------------------------------------------------
-
---
--- Structure de la table 'type'
---
-
-DROP TABLE IF EXISTS "type";
-
-CREATE TABLE "type" (
-  "id" int NOT NULL,
-  "name" varchar(255) NOT NULL,
-  "color" varchar(6) NOT NULL
-);
-
---
--- Contenu de la table "type"
---
-
 INSERT INTO "type" ("id", "name", "color") VALUES
 (1, 'Acier', 'aaaabb'),
 (2, 'Combat', 'bb5544'),
@@ -445,3 +390,5 @@ INSERT INTO "type" ("id", "name", "color") VALUES
 (15, 'Spectre', '6666bb'),
 (16, 'Ténèbres', '665544'),
 (17, 'Vol', '6699ff');
+
+COMMIT;
