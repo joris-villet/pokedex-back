@@ -1,7 +1,7 @@
 // require models
 const Pokemon = require('../models/Pokemon');
 const Type = require('../models/Type');
-const { findAllByType } = require('../models/Type');
+
 
 module.exports = {
 
