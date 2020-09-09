@@ -26,10 +26,32 @@ module.exports = {
       }
    },
 
-   getPokemonByType: async (req, res, next) => {
+   getOneType: async (req, res, next) => {
       try {
          const typeId = req.params.id;
-         const result = await Type.findAllByType(typeId);
+         const result = await Type.findOneType(typeId);
+         res.json(result);
+      }
+      catch (error) {
+         console.log(error);
+      }
+   },
+
+   getTypesByPokemon: async (req, res, next) => {
+      try {
+         const typeId = req.params.id;
+         const result = await Type.findTypesByPokemon(typeId);
+         res.json(result);
+      }
+      catch (error) {
+         console.log(error);
+      }
+   },
+
+   getPokemonsByTypes: async (req, res, next) => {
+      try {
+         const typeId = req.params.id;
+         const result = await Type.findPokemonsByTypes(typeId);
          res.json(result);
       }
       catch (error) {
