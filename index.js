@@ -6,7 +6,7 @@ if(process.env.NODE_ENV !== "production"){
 const express = require('express');
 const app = express();
 
-const cors = rerquire('cors');
+const cors = require('cors');
 app.use(cors());
 
 app.use(express.static('public'));
