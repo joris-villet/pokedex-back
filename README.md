@@ -1,2 +1,2 @@
-# pokedex-version-active-record
-En développement...
+# pokedex-back
+
